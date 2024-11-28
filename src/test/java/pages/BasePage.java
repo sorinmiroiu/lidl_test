@@ -4,8 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utility.ConfigReader;
 
 import static utility.Helpers.waitForElementToDisappear;
+import static utility.Helpers.waitForPageLoad;
 
 public class BasePage {
     protected WebDriver driver;
@@ -22,6 +24,14 @@ public class BasePage {
     public void clickAcceptNotificationButton() {
         acceptNotificationButton.click();
         waitForElementToDisappear(acceptNotificationButton);
+    }
+
+    public void goToUrl() {
+        driver.get(ConfigReader.getUrl());
+    }
+
+    public String getCurrentPage() {
+       return driver.getCurrentUrl();
     }
 }
 

@@ -2,28 +2,27 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import utility.DriverManager;
 import utility.ConfigReader;
 
 public class TestHooks {
 
-    private static WebDriver driver;
 
     @Before
-    public void setUp() {
-        driver = DriverManager.getDriver();
+    public void setup() {
+        WebDriver driver = DriverManager.getDriver();
         driver.get(ConfigReader.getUrl());
-        System.out.println("WebDriver initialized");
+        driver.manage().window().maximize();
     }
 
     @After
-    public void tearDown() {
+    public void teardown() {
         DriverManager.quitDriver();
-    }
-
-    public static WebDriver getDriver() {
-        return driver;
     }
 }
 

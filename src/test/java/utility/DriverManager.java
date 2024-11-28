@@ -9,34 +9,40 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 
 public class DriverManager {
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+
 
     public static WebDriver getDriver() {
-        if (driver == null) {
-            switch (ConfigReader.getBrowser()) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--remote-allow-origins=*");
-                    driver = new ChromeDriver(options);
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Browser not supported");
-            }
+        if (driver.get() == null) {
+            driver.set(createDriver());
         }
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        return driver;
+        return driver.get();
+    }
+
+    private static WebDriver createDriver() {
+        String browser = ConfigReader.getBrowser(); // Fetch browser from configuration
+        WebDriver instance;
+
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                instance = new ChromeDriver(chromeOptions);
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                instance = new FirefoxDriver();
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
+        return instance;
     }
 
     public static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
+        driver.get().quit();
+        driver.remove();
     }
 }
