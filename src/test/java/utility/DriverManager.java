@@ -27,6 +27,7 @@ public class DriverManager {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
                 instance = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
