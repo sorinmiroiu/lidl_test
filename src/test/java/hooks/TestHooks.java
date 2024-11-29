@@ -17,7 +17,7 @@ public class TestHooks {
     }
 
     @After
-    public void teardown() {
+    public void tearDown() {
         DriverManager.quitDriver();
     }
 }

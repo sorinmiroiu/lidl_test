@@ -19,7 +19,7 @@ public class DriverManager {
     }
 
     private static WebDriver createDriver() {
-        String browser = ConfigReader.getBrowser(); // Fetch browser from configuration
+        String browser = ConfigReader.getBrowser();
         WebDriver instance;
 
         switch (browser.toLowerCase()) {

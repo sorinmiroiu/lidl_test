@@ -40,12 +40,10 @@ public class LoginPage extends BasePage {
         usernameField.sendKeys(username);
     }
 
-    // Method that accepts parameters for entering password
     public void enterPassword(String password) {
         passwordField.sendKeys(password);
     }
 
-    // Method that uses extracted credentials from the page for password
     public void enterPassword() {
         String password = getProperty("password");
         passwordField.sendKeys(password);
