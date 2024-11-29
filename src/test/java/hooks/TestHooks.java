@@ -2,11 +2,7 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import utility.DriverManager;
 import utility.ConfigReader;
 

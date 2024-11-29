@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import utility.ConfigReader;
 
 import static utility.Helpers.waitForElementToDisappear;
-import static utility.Helpers.waitForPageLoad;
 
 public class BasePage {
     protected WebDriver driver;

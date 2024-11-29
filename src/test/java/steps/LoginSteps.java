@@ -25,7 +25,7 @@ public class LoginSteps {
         basePage.clickAcceptNotificationButton();
     }
 
-    @When("the user enters credentials")
+    @When("the user enters default credentials")
     public void the_user_enters_credentials() {
         loginPage.enterUsername();
         loginPage.enterPassword();

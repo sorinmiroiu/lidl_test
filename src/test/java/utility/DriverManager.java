@@ -6,8 +6,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import java.time.Duration;
-
 public class DriverManager {
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 

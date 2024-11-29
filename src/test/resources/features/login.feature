@@ -4,7 +4,7 @@ Feature: Login functionality
   Scenario: Valid user login
     Given the user is on the main page
     When the user goes to login page
-    And the user enters credentials
+    And the user enters default credentials
     Then the user should be redirected to the dashboard
 
   @NegativeLogin
