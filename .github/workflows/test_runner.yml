@@ -32,4 +32,4 @@ jobs:
           echo "$(Get-Command chromedriver | Select-Object -ExpandProperty Path)" >> $GITHUB_PATH
 
       - name: Build with Maven and Run Tests
-        run: mvn clean test
+        run: mvn clean install test
