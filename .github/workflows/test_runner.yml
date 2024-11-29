@@ -8,17 +8,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Java
+      - name: Set up JDK 22
         uses: actions/setup-java@v3
         with:
-          java-version: 22
-          distribution: temurin
+          distribution: 'corretto'
+          java-version: '22'
+          cache: maven
 
       - name: Install Chrome
         run: |
@@ -30,4 +32,4 @@ jobs:
           echo "$(Get-Command chromedriver | Select-Object -ExpandProperty Path)" >> $GITHUB_PATH
 
       - name: Build with Maven and Run Tests
-        run: mvn clean install test
+        run: mvn clean test
