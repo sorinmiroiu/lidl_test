@@ -8,28 +8,36 @@ on:
 
 jobs:
   build:
-
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK 22
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'corretto'
-          java-version: '22'
-          cache: maven
+          java-version: 22
+          distribution: temurin
 
       - name: Install Chrome
         run: |
-          choco install googlechrome --no-progress
-          choco install chromedriver --no-progress
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
-      - name: Add ChromeDriver to PATH
+      - name: Install ChromeDriver
         run: |
-          echo "$(Get-Command chromedriver | Select-Object -ExpandProperty Path)" >> $GITHUB_PATH
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+          DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION%.*})
+          wget -N https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip -d /usr/local/bin/
+          chmod +x /usr/local/bin/chromedriver
 
-      - name: Build with Maven and Run Tests
+      - name: Run Tests
         run: mvn clean test
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-screenshots
+          path: target/screenshots/
