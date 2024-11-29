@@ -21,6 +21,12 @@ public class Helpers {
     public static void waitForElementToAppear(WebElement element) {
         WebDriver driver = DriverManager.getDriver();
         WebDriverWait wait = new WebDriverWait(driver, timeToWait);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void waitForElementToBeClickable(WebElement element) {
+        WebDriver driver = DriverManager.getDriver();
+        WebDriverWait wait = new WebDriverWait(driver, timeToWait);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 

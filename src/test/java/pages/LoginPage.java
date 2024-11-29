@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static utility.ConfigReader.getProperty;
 import static utility.Helpers.waitForElementToAppear;
+import static utility.Helpers.waitForElementToBeClickable;
 
 public class LoginPage extends BasePage {
 
@@ -51,7 +52,7 @@ public class LoginPage extends BasePage {
 
 
     public void clickToLoginButton() {
-        waitForElementToAppear(toLoginButton);
+        waitForElementToBeClickable(toLoginButton);
         toLoginButton.click();
     }
 
