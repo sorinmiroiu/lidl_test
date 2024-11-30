@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utility.ConfigReader;
 
+import static utility.Helpers.waitForElementToAppear;
 import static utility.Helpers.waitForElementToDisappear;
 
 public class BasePage {
@@ -21,6 +22,7 @@ public class BasePage {
     WebElement acceptNotificationButton;
 
     public void clickAcceptNotificationButton() {
+        waitForElementToAppear(acceptNotificationButton);
         acceptNotificationButton.click();
         waitForElementToDisappear(acceptNotificationButton);
     }
