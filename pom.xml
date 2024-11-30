@@ -16,27 +16,26 @@
 
 
     <dependencies>
-        <!-- Selenium for browser automation -->
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.0</version> <!-- Use the latest version -->
+            <version>4.27.0</version>
         </dependency>
 
-        <!-- Cucumber for BDD (Behavior-Driven Development) -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.11.0</version> <!-- Use the latest version -->
+            <version>7.11.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.11.0</version> <!-- Use the latest version -->
+            <version>7.11.0</version>
         </dependency>
 
-        <!-- TestNG for testing framework -->
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

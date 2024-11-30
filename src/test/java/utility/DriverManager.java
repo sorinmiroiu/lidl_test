@@ -26,8 +26,9 @@ public class DriverManager {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080");
+                chromeOptions.addArguments("--window-size=1920,1080");
                 instance = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
