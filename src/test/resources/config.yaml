@@ -1,6 +1,6 @@
 url=https://www.lidl.de/
 browser=chrome
-timeToWait=15
+timeToWait=30
 
 username=miroiu.sorin0@gmail.com
 password=LidlTest1!
