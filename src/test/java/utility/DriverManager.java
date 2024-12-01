@@ -26,7 +26,7 @@ public class DriverManager {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+                chromeOptions.addArguments( "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 instance = new ChromeDriver(chromeOptions);
                 break;
